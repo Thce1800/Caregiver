@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="WindowCaregiver2" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="100" Margin="290,156,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="lstBoxChild" HorizontalAlignment="Left" Height="159" Margin="74,91,0,0" VerticalAlignment="Top" Width="202"/>
+        <Label x:Name="lblChildren" Content="Barn" HorizontalAlignment="Left" Margin="74,44,0,0" VerticalAlignment="Top" Width="195"/>
+        <Button x:Name="btnOk" Content="Välj barn" HorizontalAlignment="Left" Margin="311,206,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
