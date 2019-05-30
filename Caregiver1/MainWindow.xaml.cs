@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Caregiver1
 {
     /// <summary>
@@ -23,6 +24,29 @@ namespace Caregiver1
         public MainWindow()
         {
             InitializeComponent();
+           
+        }
+        private void ShowLoginWindowCaregiver()
+        {
+            WindowCargiver1 windowCaregiver1 = new WindowCargiver1();
+            windowCaregiver1.Show();
+            this.Close();
+        }
+
+        private void ShowWindowPersonel1()
+        {
+            WindowPersonel1 windowPersonel1 = new WindowPersonel1();
+            windowPersonel1.Show();
+            this.Close();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ShowLoginWindowCaregiver();
+        }
+
+        private void BtnPersonel_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindowPersonel1();
         }
     }
 }
