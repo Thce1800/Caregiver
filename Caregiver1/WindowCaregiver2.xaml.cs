@@ -22,6 +22,45 @@ namespace Caregiver1
         public WindowCaregiver2()
         {
             InitializeComponent();
+            FillListBoxChildren();
+        }
+        DbOperations dbOp;
+        Child currentChild;
+
+        private void FillListBoxChildren()
+        {
+
+            dbOp = new DbOperations();
+            List<Child> children = dbOp.GetChildren();
+            lstBoxChild.ItemsSource = null;
+            lstBoxChild.ItemsSource = children;
+
+        }
+        private void ShowWindow3()
+        {
+            WindowCaregiver3 windowCaregiver3 = new WindowCaregiver3();
+            windowCaregiver3.Show();
+            this.Close();
+        }
+        private void LstBoxChild_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentChild = (Child)lstBoxChild.SelectedItem;
+            if (currentChild != null)
+            {
+                lblChild.Content = currentChild;
+            }
+        }
+        private void BtnSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentChild != null)
+            {
+                ShowWindow3();
+            }
+
+            else
+            {
+                MessageBox.Show("Du måste välja ett barn för att kunna gå vidare till schemat");
+            }
         }
     }
 }

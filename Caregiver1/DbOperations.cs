@@ -10,7 +10,7 @@ namespace Caregiver1
 {
     class DbOperations
     {
-
+        
         public List<Caregiver> GetAllCaregivers()
         {
             Caregiver cg;
@@ -44,6 +44,34 @@ namespace Caregiver1
 
         }
 
+        public List<Child> GetChildren()
+        {
+            Child child;
+            List<Child> children = new List<Child>();
+            string stmt = "SELECT child.person_id, child.firstname FROM ((child_caregiver  INNER JOIN child ON child_caregiver.child_id = child.person_id)  INNER JOIN caregiver ON child_caregiver.caregiver_id = caregiver.person_id) WHERE caregiver.person_id = 4011";
+            NpgsqlConnection conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString);
+
+            conn.Open();
+
+            var cmd = new NpgsqlCommand(stmt, conn);
+
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                child = new Child()
+                {
+                    Id = reader.GetInt32(0),
+                    Firstname = reader.GetString(1),
+                };
+                children.Add(child);
+
+
+            }
+            conn.Close();
+
+            return children;
+        }
 
 
     }

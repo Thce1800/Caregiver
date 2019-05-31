@@ -78,8 +78,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Child.cs" />
     <Compile Include="WindowCaregiver2.xaml.cs">
       <DependentUpon>WindowCaregiver2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowCaregiver3.xaml.cs">
+      <DependentUpon>WindowCaregiver3.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowCargiver1.xaml.cs">
       <DependentUpon>WindowCargiver1.xaml</DependentUpon>
@@ -102,6 +106,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="WindowCaregiver2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowCaregiver3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
