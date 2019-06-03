@@ -10,7 +10,7 @@ namespace Caregiver1
 {
     class DbOperations
     {
-        
+
         public List<Caregiver> GetAllCaregivers()
         {
             Caregiver cg;
@@ -72,7 +72,6 @@ namespace Caregiver1
 
             return children;
         }
-
 
     }
 }

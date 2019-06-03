@@ -26,6 +26,7 @@ namespace Caregiver1
         }
         DbOperations dbOperations;
         Caregiver currentCg;
+        
         private void FillListBoxCaregiver()
         {
             
@@ -41,6 +42,15 @@ namespace Caregiver1
             windowCaregiver2.Show();
             this.Close();
         }
+        private void FillListComboBoxChildren()
+        {
+
+            dbOperations = new DbOperations();
+            List<Child> children = dbOperations.GetChildren();
+            cmbBoxChildren.ItemsSource = null;
+            cmbBoxChildren.ItemsSource = children;
+
+        }
         private void LstBoxCaregiver_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
                 currentCg = (Caregiver)lstBoxCaregiver.SelectedItem;
@@ -53,15 +63,24 @@ namespace Caregiver1
         {
             if (currentCg != null)
             {
-                ShowWindow2();
+                FillListComboBoxChildren();
+                
             }
 
             else
             {
                 MessageBox.Show("Du måste välja ditt namn i listan för att kunna logga in");
             }
-           
-            
+
+            lblChildren.Content = "Välj barn";
+            btnSchedule.IsEnabled = true;
+            btnLogin.IsEnabled = false;
+
+        }
+
+        private void BtnChild_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow2();
         }
     }
 }
