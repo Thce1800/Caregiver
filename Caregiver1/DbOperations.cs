@@ -73,5 +73,44 @@ namespace Caregiver1
             return children;
         }
 
+        //METOD SOM HÄMTAR SCHEMA MED PERSON-ID
+        //Skickar in personens id som parameter
+
+        public List<Schedule> GetChildsSchedule(int id)
+        {
+            List<Schedule> schemor = new List<Schedule>();
+            Schedule s;
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM schedule WHERE person_id = @person_id ORDER BY date_id ASC"; //LIMIT 7? 
+                    cmd.Parameters.AddWithValue("person_id", id);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            s = new Schedule()
+                            {
+                                date_id = reader.GetDateTime(1),
+                                weekday = reader.GetString(2),
+                                breakfast = reader.GetBoolean(3),
+                                attendance = reader.GetBoolean(9)
+                            };
+                            schemor.Add(s);
+
+
+                        }
+
+                    }
+                }
+
+
+                return schemor;
+            }
+        }
     }
 }

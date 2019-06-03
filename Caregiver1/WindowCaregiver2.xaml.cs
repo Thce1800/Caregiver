@@ -22,12 +22,18 @@ namespace Caregiver1
         public WindowCaregiver2()
         {
             InitializeComponent();
-            
+            UpdateListview();
         }
-        
-      
-     
-        
-     
+
+        private void UpdateListview()
+        {
+            DbOperations bd = new DbOperations();
+            listView.ItemsSource = null;
+            //Sätt in barn från databasen
+            listView.ItemsSource = bd.GetChildsSchedule(1028);
+        }
+
+
+
     }
 }

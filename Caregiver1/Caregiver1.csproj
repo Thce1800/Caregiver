@@ -79,6 +79,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Child.cs" />
+    <Compile Include="Schedule.cs" />
     <Compile Include="WindowCaregiver2.xaml.cs">
       <DependentUpon>WindowCaregiver2.xaml</DependentUpon>
     </Compile>
