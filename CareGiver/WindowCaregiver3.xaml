@@ -1,0 +1,20 @@
+﻿<Window x:Class="CareGiver.WindowCaregiver3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CareGiver"
+        mc:Ignorable="d"
+        Title="Sjukanmälan" Height="262.218" Width="385.526">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="cmbBoxReturn" HorizontalAlignment="Left" Margin="72,72,0,0" VerticalAlignment="Top" Width="201" SelectionChanged="CmbBoxReturn_SelectionChanged"/>
+        <Button x:Name="btnSave" Content="Spara" HorizontalAlignment="Left" Margin="83,111,0,0" VerticalAlignment="Top" Width="75" Background="#FF14C2D3" Click="BtnSave_Click" RenderTransformOrigin="0.462,-1.417"/>
+        <Label x:Name="lblReturns" Content="Beräknas åter:" HorizontalAlignment="Left" Margin="72,41,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnCancel" Content="Avbryt" HorizontalAlignment="Left" Margin="175,111,0,0" VerticalAlignment="Top" Width="75" Background="#FFF37E7E" Click="BtnCancel_Click"/>
+
+
+    </Grid>
+</Window>

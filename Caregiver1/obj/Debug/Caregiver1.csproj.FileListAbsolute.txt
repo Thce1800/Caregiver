@@ -1,1 +1,9 @@
 C:\Users\theap\Downloads\Caregiver-master\Caregiver-master\Caregiver1\bin\Debug\Caregiver1.exe.config
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\Caregiver1.csprojAssemblyReference.cache
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\MainWindow.g.cs
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\WindowCaregiver2.g.cs
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\WindowCargiver1.g.cs
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\WindowPersonel1.g.cs
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\App.g.cs
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\Caregiver1_MarkupCompile.cache
+C:\Users\root\Source\Repos\Caregiver\Caregiver1\obj\Debug\Caregiver1_MarkupCompile.lref

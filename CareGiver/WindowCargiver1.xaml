@@ -1,0 +1,19 @@
+﻿<Window x:Class="CareGiver.WindowCargiver1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CareGiver"
+        mc:Ignorable="d"
+        Title="Logga in" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="lstBoxCaregiver" HorizontalAlignment="Left" Height="269" Margin="82,56,0,0" VerticalAlignment="Top" Width="286" SelectionChanged="LstBoxCaregiver_SelectionChanged"/>
+        <Label x:Name="lblCaregiver" Content="Vårdnadshavare" HorizontalAlignment="Left" Margin="82,25,0,0" VerticalAlignment="Top" Width="204" FontFamily="Lucida Handwriting" FontWeight="Bold" FontSize="18"/>
+        <Button x:Name="btnLogin" Content="Logga in" HorizontalAlignment="Left" Margin="440,119,0,0" VerticalAlignment="Top" Width="75" Background="#FF14C2D3" Click="BtnLogin_Click"/>
+        <Label x:Name="lblLogin" Content="" HorizontalAlignment="Left" Margin="440,88,0,0" VerticalAlignment="Top" Width="209"/>
+        <Label x:Name="lblChildren" Content="" HorizontalAlignment="Left" Margin="440,168,0,0" VerticalAlignment="Top" Width="90" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="btnSchedule" Content="Gå vidare till schemat" HorizontalAlignment="Left" Margin="440,226,0,0" VerticalAlignment="Top" Width="131" IsEnabled="False" Background="#FF14C2D3" Click="BtnChild_Click"/>
+        <ComboBox x:Name="cmbBoxChildren" HorizontalAlignment="Left" Margin="440,199,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="CmbBoxChildren_SelectionChanged"/>
+
+    </Grid>
+</Window>
