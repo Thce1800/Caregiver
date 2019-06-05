@@ -10,7 +10,6 @@ namespace CareGiver
 {
     class DbOperations
     {
-
         public List<Caregiver> GetAllCaregivers()
         {
             Caregiver cg;
@@ -31,8 +30,8 @@ namespace CareGiver
                 cg = new Caregiver()
                 {
                     Id = reader.GetInt32(0),
-                    Firstname = reader.GetString(2),
-                    Lastname = reader.GetString(3),
+                    Firstname = reader.GetString(1),
+                    Lastname = reader.GetString(2),
                 };
                 caregivers.Add(cg);
 
@@ -95,25 +94,97 @@ namespace CareGiver
                     {
                         while (reader.Read())
                         {
-                            s = new Schedule()
-                            {
-                                date_id = reader.GetDateTime(1),
+                             s = new Schedule()
+                             {
+                                string_date = reader.GetDateTime(1).ToString("dd-MM-yyyy"),
                                 weekday = reader.GetString(2),
                                 breakfast = reader.GetBoolean(3),
+                                time_start = reader.GetDateTime(7).ToString("HH:mm"),
+                                time_end = reader.GetDateTime(8).ToString("HH:mm"),
                                 attendance = reader.GetBoolean(9)
-                            };
+                             };
                             schemor.Add(s);
+                            //s = new Schedule()
+                            //{
+                            //    date_id = reader.GetDateTime(1),
+                            //    weekday = reader.GetString(2),
+                            //    time_start = reader.GetDateTime(7).ToString("HH:mm"),
+                            //    time_end = reader.GetDateTime(8).ToString("HH:mm"),
+                            //    breakfast = reader.GetBoolean(3),
+                            //    attendance = reader.GetBoolean(9)
 
-
+                            //    //LÄGG IN STOPP OCH START TID
+                            //};
+                            //schemor.Add(s);
                         }
 
                     }
                 }
 
-
                 return schemor;
             }
         }
+        public void AddSchedule(int schedule_id, DateTime date_id, string weekday, bool breakfast, bool snack, DateTime time_start, DateTime time_end, bool attendance, int person_id)
+        {
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO schedule(schedule_id, date_id, weekday, breakfast, snack, time_start, time_end, attendance, person_id) VALUES (@schedule_id, @date_id, @weekday, @breakfast, @snack, @time_start, @time_end, @attendance, @person_id)";
+                    cmd.Parameters.AddWithValue("schedule_id", schedule_id);
+                    cmd.Parameters.AddWithValue("date_id", date_id);
+                    cmd.Parameters.AddWithValue("weekday", weekday);
+                    cmd.Parameters.AddWithValue("breakfast", breakfast);
+                    cmd.Parameters.AddWithValue("snack", snack);
+                    cmd.Parameters.AddWithValue("time_start", time_start);
+                    cmd.Parameters.AddWithValue("time_end", time_end);
+                    cmd.Parameters.AddWithValue("attendance", attendance);
+                    cmd.Parameters.AddWithValue("person_id", person_id);
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+        }
+        public void DeleteSchedule(DateTime date, int id)
+        {
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    //ÄNDRAR INTE person_id utan id bestämmer vilken som ändras
+                    cmd.Connection = conn;
+                    cmd.CommandText = "DELETE FROM schedule WHERE date_id= @date_id AND person_id= @person_id;";
+                    cmd.Parameters.AddWithValue("date_id", date);
+                    cmd.Parameters.AddWithValue("person_id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public int ScheduleID()
+        {
+            int c = 0;
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT MAX (schedule_id) FROM schedule;";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            c = reader.GetInt32(0);
+                        }
+                    }
+                }
+                return c;
+            }
+        }
+        //TA BORT
         public List<Date> Dates(int id)
         {
             List<Date> dates = new List<Date>();
@@ -137,14 +208,10 @@ namespace CareGiver
                                 weekday = reader.GetString(2),
                             };
                             dates.Add(d);
-
-
                         }
 
                     }
                 }
-
-
                 return dates;
             }
         }
@@ -175,10 +242,7 @@ namespace CareGiver
                 return c;
             }
         }
-
-
-
-        public void UpdateSchedule(int id, DateTime date, int att, string weekday)
+        public void UpdateScheduleSick(int id, DateTime date, int att, string weekday)
         {
             using (var conn = new
             NpgsqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString))
@@ -197,7 +261,6 @@ namespace CareGiver
                 }
             }
         }
-
         public int UpdateNonAttendance(int personId, string typeId)
         {
             using (var conn = new

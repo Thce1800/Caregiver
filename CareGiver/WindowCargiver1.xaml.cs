@@ -53,6 +53,7 @@ namespace CareGiver
         private void LstBoxCaregiver_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentCg = (Caregiver)lstBoxCaregiver.SelectedItem;
+            //currentCg.CurrentId = currentCg.Id;
             if (currentCg != null)
             {
                 lblLogin.Content = currentCg;
@@ -63,16 +64,17 @@ namespace CareGiver
             if (currentCg != null)
             {
                 FillListComboBoxChildren();
-
+                btnLogin.IsEnabled = false;
             }
 
             else
             {
                 MessageBox.Show("Du måste välja ditt namn i listan för att kunna logga in");
+               
             }
 
             lblChildren.Content = "Välj barn";
-            btnLogin.IsEnabled = false;
+            
 
         }
         private void BtnChild_Click(object sender, RoutedEventArgs e)
@@ -84,6 +86,7 @@ namespace CareGiver
             Child currentChild = (Child)cmbBoxChildren.SelectedItem;
             if (currentChild != null)
             {
+                currentChild.CurrentID = currentChild.Id;
                 btnSchedule.IsEnabled = true;
             }
 

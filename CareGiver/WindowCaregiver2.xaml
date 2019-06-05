@@ -5,21 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CareGiver"
         mc:Ignorable="d"
-        Title="WindowCaregiver2" Height="450" Width="800">
+        Title="Schema ändringar" Height="450" Width="821">
     <Grid>
         <Label x:Name="lblChild" Content="Barnets namn" HorizontalAlignment="Left" Margin="74,65,0,0" VerticalAlignment="Top" Width="176" FontFamily="Lucida Calligraphy" FontSize="14" FontWeight="Bold"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="216" Margin="74,94,0,0" VerticalAlignment="Top" Width="413">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="216" Margin="74,94,0,0" VerticalAlignment="Top" Width="606">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="date_id" Width="100" DisplayMemberBinding="{Binding date_id}"/>
-                    <GridViewColumn Header="weekday" Width="100" DisplayMemberBinding="{Binding weekday}"/>
-                    <GridViewColumn Header="breakfast" Width="100" DisplayMemberBinding="{Binding breakfast}"/>
-                    <GridViewColumn Header="attendance" Width="100" DisplayMemberBinding="{Binding attendance}"/>
+                    <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding string_date}"/>
+                    <GridViewColumn Header="Veckodag" Width="100" DisplayMemberBinding="{Binding weekday}"/>
+                    <GridViewColumn Header="Frukost" Width="100" DisplayMemberBinding="{Binding breakfast}"/>
+                    <GridViewColumn Header="Närvaro" Width="100" DisplayMemberBinding="{Binding attendance}"/>
+                    <GridViewColumn Header="Börjar" Width="100" DisplayMemberBinding="{Binding time_start}"/>
+                    <GridViewColumn Header="Slutar" Width="100" DisplayMemberBinding="{Binding time_end}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnSickReport" Content="Sjukanmäl" HorizontalAlignment="Left" Margin="546,273,0,0" VerticalAlignment="Top" Width="148" Background="#FF14C2D3" Height="37" Click="BtnSickReport_Click"/>
+        <Button x:Name="btnSickReport" Content="Sjukanmäl" HorizontalAlignment="Left" Margin="423,335,0,0" VerticalAlignment="Top" Width="148" Height="37" Background="#FF14C2D3" Click="BtnSickReport_Click"/>
         <Button x:Name="btnBack" Content="Tillbaka" HorizontalAlignment="Left" Margin="20,352,0,0" VerticalAlignment="Top" Width="75" Click="BtnBack_Click"/>
-        <Button x:Name="btnSignOut" Content="Logga ut" HorizontalAlignment="Left" Margin="694,20,0,0" VerticalAlignment="Top" Width="75" Click="BtnSignOut_Click"/> 
+        <Button x:Name="btnSignOut" Content="Logga ut" HorizontalAlignment="Left" Margin="694,20,0,0" VerticalAlignment="Top" Width="75" Click="BtnSignOut_Click"/>
+        <Button x:Name="btnAddSchedule" Content="Redigera schema" HorizontalAlignment="Left" Margin="219,335,0,0" VerticalAlignment="Top" Width="148" Background="#FF14C2D3" Click="btnAddSchedule_Click" Height="37"/>
+
     </Grid>
 </Window>

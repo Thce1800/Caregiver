@@ -1,0 +1,39 @@
+﻿<Window x:Class="CareGiver.WindowAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CareGiver"
+        mc:Ignorable="d"
+        Title="Schema ändringar" Height="450" Width="1000">
+    <Grid>
+        <Label x:Name="lblChildName" Content="BARNS NAMN" HorizontalAlignment="Left" Margin="19,1,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Lucida Handwriting" FontSize="18"/>
+        <GroupBox x:Name="groupBox" Header="Lägg till schema" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="267" Width="169">
+            <Button x:Name="btnAdd" Content="Lägg till" HorizontalAlignment="Left" Margin="71,217,0,0" VerticalAlignment="Top" Width="75" Background="#FF14C2D3" Click="btnAdd_Click"/>
+        </GroupBox>
+        <TextBox x:Name="tbxDate" HorizontalAlignment="Left" Height="23" Margin="19,93,0,0" TextWrapping="Wrap" Text="MM-dd-yyyy" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbxTimeIn" HorizontalAlignment="Left" Height="23" Margin="19,158,0,0" TextWrapping="Wrap" Text="hh:mm" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbxTimeEnd" HorizontalAlignment="Left" Height="23" Margin="19,214,0,0" TextWrapping="Wrap" Text="hh:mm" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblWeekday" Content="Datum" HorizontalAlignment="Left" Margin="19,67,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Kommer" HorizontalAlignment="Left" Margin="19,132,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="Går hem" HorizontalAlignment="Left" Margin="19,188,0,0" VerticalAlignment="Top"/>
+        <GroupBox x:Name="groupBox1" Header="Ledig" HorizontalAlignment="Left" Margin="184,41,0,0" VerticalAlignment="Top" Height="173" Width="156">
+            <Button x:Name="btnLedig" Content="Ledig" HorizontalAlignment="Left" Margin="71,128,-2,0" VerticalAlignment="Top" Width="75" Background="#FF14C2D3" Click="btnLedig_Click"/>
+        </GroupBox>
+        <Label x:Name="lblWeekday_Copy" Content="Datum" HorizontalAlignment="Left" Margin="197,67,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbxLedig" HorizontalAlignment="Left" Height="23" Margin="197,98,0,0" TextWrapping="Wrap" Text="MM-dd-yyyy" VerticalAlignment="Top" Width="120"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="226" Margin="357,41,0,0" VerticalAlignment="Top" Width="606">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Datum" Width="100" DisplayMemberBinding="{Binding string_date}"/>
+                    <GridViewColumn Header="Veckodag" Width="100" DisplayMemberBinding="{Binding weekday}"/>
+                    <GridViewColumn Header="Frukost" Width="100" DisplayMemberBinding="{Binding breakfast}"/>
+                    <GridViewColumn Header="Närvaro" Width="100" DisplayMemberBinding="{Binding attendance}"/>
+                    <GridViewColumn Header="Börjar" Width="100" DisplayMemberBinding="{Binding time_start}"/>
+                    <GridViewColumn Header="Slutar" Width="100" DisplayMemberBinding="{Binding time_end}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnReturn" Content="Tillbaka" HorizontalAlignment="Left" Margin="33,357,0,0" VerticalAlignment="Top" Width="75" Click="BtnReturn_Click"/>
+    </Grid>
+</Window>

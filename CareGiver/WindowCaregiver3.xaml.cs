@@ -45,19 +45,21 @@ namespace CareGiver
 
             if (currentDate != null)
             {
-                attId = dBOp.UpdateNonAttendance(3001, "Sjukdom");
+                //Caregiver c = new Caregiver();
+
+                attId = dBOp.UpdateNonAttendance(3001, "Sjukdom"); //c.CurrentId
 
                 if (attId > 0)
                 {
                     DateTime date = currentDate.date_id;
-                    dBOp.UpdateSchedule(1028, date, attId, currentDate.weekday);
+                    dBOp.UpdateScheduleSick(1028, date, attId, currentDate.weekday);
                     this.Close();
                     MessageBox.Show($"{dBOp.GetChildById(1028)} är sjukanmäld och beräknas åter {currentDate}");
                 }
 
                 else
                 {
-                    MessageBox.Show("Oooops");
+                    MessageBox.Show("Något gick fel, kontrollera att du valt rätt datum");
                 }
 
             }

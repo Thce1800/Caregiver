@@ -24,8 +24,7 @@ namespace CareGiver
             InitializeComponent();
             UpdateListview();
         }
-        WindowCargiver1 window1;
-        Schedule currentDate;
+        
         private void UpdateListview()
         {
             DbOperations db = new DbOperations();
@@ -41,13 +40,19 @@ namespace CareGiver
         }
         private void ShowWindow1()
         {
-            window1 = new WindowCargiver1();
+            WindowCargiver1 window1 = new WindowCargiver1();
             window1.Show();
+            this.Close();
+        }
+        private void ShowWindowAdd()
+        {
+            WindowAdd winAdd = new WindowAdd();
+            winAdd.Show();
             this.Close();
         }
         private void CloseWindow1()
         {
-            window1 = new WindowCargiver1();
+            WindowCargiver1 window1 = new WindowCargiver1();
             window1.Close();
 
         }
@@ -70,6 +75,10 @@ namespace CareGiver
         {
             CloseWindow1();
             ShowMainwindow();
+        }
+        private void btnAddSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindowAdd();
         }
     }
 }
